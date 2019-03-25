@@ -10,6 +10,7 @@ public class FastZombie extends Zombie {
 
     @Override
     public void step(SimulationController controller) {
+        this.setRandomDirection(controller);
 
     }
 
