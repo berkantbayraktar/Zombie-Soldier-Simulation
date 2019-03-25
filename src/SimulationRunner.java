@@ -18,7 +18,7 @@ public class SimulationRunner {
         //System.out.println(simulation);
         while (!simulation.isFinished()) {
             simulation.stepAll();
-            System.out.println(simulation);
+            //System.out.println(simulation);
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException ex) {

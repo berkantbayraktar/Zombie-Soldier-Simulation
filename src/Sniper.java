@@ -11,6 +11,16 @@ public class Sniper extends  Soldier{
 
     @Override
     public void step(SimulationController controller) {
+        switch(this.getSoldier_state()){
+            case SEARCHING:
 
+                break;
+            case AIMING:
+                break;
+            case SHOOTING:
+                break;
+             default:
+                 System.out.println("Invalid State");
+        }
     }
 }

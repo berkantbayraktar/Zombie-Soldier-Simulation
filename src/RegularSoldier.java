@@ -17,12 +17,7 @@ public class RegularSoldier extends  Soldier{
 
         switch (this.getSoldier_state()){
             case SEARCHING:
-                if(isFirstStep()){
-                    this.setDirection(Position.generateRandomDirection(true));
-                    this.setFirstStep(false);
-                    System.out.println(this.getName() + " changed direction to " + this.getDirection() + ".");
-                }
-
+                this.setRandomDirection(controller); // SET RANDOM DIRECTION IF THIS IS THE FIRST STEP CALL
 
                 Position calculatedTarget = Position.calculateNextPosition(this.getPosition(), this.getDirection(), this.getSpeed());  //CALCULATE TARGET LOCATION
                 boolean change_position = controller.isInTheRange(calculatedTarget.getX(),calculatedTarget.getY());  // SET CHANGE POSITION FLAG BY LOOKING THE TARGET LOCATION IS IN THE RANGE OR NOT

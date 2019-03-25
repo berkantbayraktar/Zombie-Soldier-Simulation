@@ -37,6 +37,7 @@ public abstract class Bullet extends SimulationObject {
             boolean change_position = controller.isInTheRange(next_position.getX(),next_position.getY());
             if(change_position){
                 this.setPosition(next_position);
+                System.out.println("Now the position is " + this.getPosition() + "step :" + i );
             }
             else{
                 controller.removeSimulationObject(this);
@@ -72,6 +73,11 @@ public abstract class Bullet extends SimulationObject {
                 return controller.getZombies().get(i);
         }
         return null;
+    }
+
+    @Override
+    public void setRandomDirection(SimulationController controller) {
+        return ;
     }
 
     @Override
