@@ -109,6 +109,23 @@ public abstract class Soldier extends SimulationObject {
         }
     }
 
+    public void shoot(SimulationController controller){
+        double distance_to_closest_zombie;
+
+        SimulationObject bullet = new RegularSoldierBullet("Bullet" + Bullet.getBullet_number(), this.getPosition(), this.getDirection());
+        controller.addSimulationObject(bullet);
+        System.out.println(this.getName() + " fired " + bullet.getName() + " to " + bullet.getDirection() + ".");
+        distance_to_closest_zombie = calculateDistanceToEnemy(controller);
+        if(distance_to_closest_zombie <= this.getShooting_range()) {
+            this.setSoldier_state(SoldierState.AIMING);
+            System.out.println(this.getName() + " changed state to " + this.getSoldier_state() + ".");
+        }
+        else{
+            this.setSoldier_state(SoldierState.SEARCHING);
+            System.out.println(this.getName() + " changed state to " + this.getSoldier_state() + ".");
+        }
+    }
+
     @Override
     public String toString() {
         return "Soldier{" +

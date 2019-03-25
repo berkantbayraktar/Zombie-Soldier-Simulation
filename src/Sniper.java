@@ -21,6 +21,7 @@ public class Sniper extends  Soldier{
                 this.aim(controller); // CALCULATE THE EUCLIDEAN DISTANCE TO CLOSEST ZOMBIE. IF THE DISTANCE IS SHORTER THAN OR EQUAL TO THE SHOOTING RANGE OF THE SOLDIER, CHANGE SOLDIER DIRECTION TO ZOMBIE AND CHANGE STATE TO SHOOTING ELSE CHANGE STATE TO SEARCHING
                 break;
             case SHOOTING:
+                this.shoot(controller); // CREATE BULLET WITH THE POSITION AND DIRECTION OF THE SOLDIER THEN ADD IT TO SIMULATION. AFTER THAT, TURN BACK TO AIMING OR SEARCHING STATE ACCORDING TO DISTANCE TO ZOMBIE
                 break;
              default:
                  System.out.println("Invalid State");

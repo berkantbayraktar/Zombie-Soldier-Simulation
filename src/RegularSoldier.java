@@ -33,18 +33,7 @@ public class RegularSoldier extends  Soldier{
                 break;
 
             case SHOOTING:
-                SimulationObject bullet = new RegularSoldierBullet("Bullet" + Bullet.getBullet_number(), this.getPosition(), this.getDirection());
-                controller.addSimulationObject(bullet);
-                System.out.println(this.getName() + " fired " + bullet.getName() + " to " + bullet.getDirection() + ".");
-                distance_to_closest_zombie = calculateDistanceToEnemy(controller);
-                if(distance_to_closest_zombie <= this.getShooting_range()) {
-                    this.setSoldier_state(SoldierState.AIMING);
-                    System.out.println(this.getName() + " changed state to " + this.getSoldier_state() + ".");
-                }
-                else{
-                    this.setSoldier_state(SoldierState.SEARCHING);
-                    System.out.println(this.getName() + " changed state to " + this.getSoldier_state() + ".");
-                }
+                this.shoot(controller);// CREATE BULLET WITH THE POSITION AND DIRECTION OF THE SOLDIER THEN ADD IT TO SIMULATION. AFTER THAT, TURN BACK TO AIMING OR SEARCHING STATE ACCORDING TO DISTANCE TO ZOMBIE
                 break;
             default:
                 System.out.println("Invalid State");
