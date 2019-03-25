@@ -16,6 +16,7 @@ public class Sniper extends  Soldier{
                 this.setRandomDirection(controller); // SET RANDOM DIRECTION IF THIS IS THE FIRST STEP CALL
                 this.moveOrChangeDirection(controller); // CALCULATE NEXT POSITION AND TRY TO RUN , IF THE POSITION IS OUT OF BOUNDS CHANGE DIRECTION TO RANDOM VALUE.
                 this.setSoldier_state(SoldierState.AIMING); // CHANGE STATE TO AIMING
+                System.out.println(this.getName() + " changed state to " + this.getSoldier_state() + ".");
                 break;
             case AIMING:
                 this.aim(controller); // CALCULATE THE EUCLIDEAN DISTANCE TO CLOSEST ZOMBIE. IF THE DISTANCE IS SHORTER THAN OR EQUAL TO THE SHOOTING RANGE OF THE SOLDIER, CHANGE SOLDIER DIRECTION TO ZOMBIE AND CHANGE STATE TO SHOOTING ELSE CHANGE STATE TO SEARCHING
