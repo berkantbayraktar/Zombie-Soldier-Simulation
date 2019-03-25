@@ -81,6 +81,11 @@ public abstract class Bullet extends SimulationObject {
     }
 
     @Override
+    public void moveOrChangeDirection(SimulationController controller) {
+        return ;
+    }
+
+    @Override
     public String toString() {
         return "Bullet{" +
                 "name=" + this.getName() +

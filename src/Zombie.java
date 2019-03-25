@@ -82,6 +82,21 @@ public abstract class Zombie extends  SimulationObject {
     }
 
     @Override
+    public void moveOrChangeDirection(SimulationController controller) {
+        Position calculatedTarget = Position.calculateNextPosition(this.getPosition(), this.getDirection(), this.getSpeed());  //CALCULATE TARGET LOCATION
+        boolean change_position = controller.isInTheRange(calculatedTarget.getX(),calculatedTarget.getY());  // SET CHANGE POSITION FLAG BY LOOKING THE TARGET LOCATION IS IN THE RANGE OR NOT
+
+        if(change_position){
+            this.setPosition(calculatedTarget);
+            System.out.println(this.getName() + " moved to " + this.getPosition() + ".");
+        }
+        else{
+            this.setDirection(Position.generateRandomDirection(true));
+            System.out.println(this.getName() + " changed direction to " + this.getDirection() + ".");
+        }
+    }
+
+    @Override
     public String toString() {
         return "Zombie{" +
                 "name=" + this.getName() +

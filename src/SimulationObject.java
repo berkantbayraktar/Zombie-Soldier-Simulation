@@ -53,4 +53,6 @@ public abstract class SimulationObject {
     public abstract double calculateDistanceToEnemy(SimulationController controller);
     public abstract SimulationObject nearestEnemy(SimulationController controller);
     public abstract void setRandomDirection(SimulationController controller);
+    public abstract  void moveOrChangeDirection(SimulationController controller);
+
 }
