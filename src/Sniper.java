@@ -14,7 +14,7 @@ public class Sniper extends  Soldier{
         switch(this.getSoldier_state()){
             case SEARCHING:
                 this.setRandomDirection(controller); // SET RANDOM DIRECTION IF THIS IS THE FIRST STEP CALL
-                this.moveOrChangeDirection(controller); // CALCULATE NEXT POSITION AND TRY TO RUN , IF THE POSITION IS OUT OF BOUNDS CHANGE DIRECTION TO RARNDOM VALUE.
+                this.moveOrChangeDirection(controller); // CALCULATE NEXT POSITION AND TRY TO RUN , IF THE POSITION IS OUT OF BOUNDS CHANGE DIRECTION TO RANDOM VALUE.
                 this.setSoldier_state(SoldierState.AIMING); // CHANGE STATE TO AIMING
                 break;
             case AIMING:
