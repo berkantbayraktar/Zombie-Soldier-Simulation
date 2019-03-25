@@ -109,10 +109,9 @@ public abstract class Soldier extends SimulationObject {
         }
     }
 
-    public void shoot(SimulationController controller){
+    public void shoot(SimulationController controller, SimulationObject bullet){
         double distance_to_closest_zombie;
 
-        SimulationObject bullet = new RegularSoldierBullet("Bullet" + Bullet.getBullet_number(), this.getPosition(), this.getDirection());
         controller.addSimulationObject(bullet);
         System.out.println(this.getName() + " fired " + bullet.getName() + " to " + bullet.getDirection() + ".");
         distance_to_closest_zombie = calculateDistanceToEnemy(controller);
