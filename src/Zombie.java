@@ -53,44 +53,9 @@ public abstract class Zombie extends  SimulationObject {
     }
 
     @Override
-    public double calculateDistanceToEnemy(SimulationController controller) {
-        double distance = Double.MAX_VALUE;
-        for(int i = 0 ; i < controller.getSoldiers().size() ; i++) {
-            if(this.getPosition().distance(controller.getSoldiers().get(i).getPosition()) < distance)
-                distance = this.getPosition().distance(controller.getSoldiers().get(i).getPosition());
-        }
-        return distance;
-    }
-
-    @Override
-    public SimulationObject nearestEnemy(SimulationController controller) {
-        double distance_to_nearest_enemy = calculateDistanceToEnemy(controller);
-        for(int i = 0 ; i < controller.getSoldiers().size() ; i++){
-            if(this.getPosition().distance(controller.getSoldiers().get(i).getPosition()) == distance_to_nearest_enemy)
-                return controller.getSoldiers().get(i);
-        }
-        return null;
-    }
-
-    @Override
     public void setRandomDirection() {
             this.setDirection(Position.generateRandomDirection(true));
             System.out.println(this.getName() + " changed direction to " + this.getDirection() + ".");
-    }
-
-    @Override
-    public void moveOrChangeDirection(SimulationController controller) {
-        Position calculatedTarget = Position.calculateNextPosition(this.getPosition(), this.getDirection(), this.getSpeed());  //CALCULATE TARGET LOCATION
-        boolean change_position = controller.isInTheRange(calculatedTarget.getX(),calculatedTarget.getY());  // SET CHANGE POSITION FLAG BY LOOKING THE TARGET LOCATION IS IN THE RANGE OR NOT
-
-        if(change_position){
-            this.setPosition(calculatedTarget);
-            System.out.println(this.getName() + " moved to " + this.getPosition() + ".");
-        }
-        else{
-            this.setDirection(Position.generateRandomDirection(true));
-            System.out.println(this.getName() + " changed direction to " + this.getDirection() + ".");
-        }
     }
 
     @Override

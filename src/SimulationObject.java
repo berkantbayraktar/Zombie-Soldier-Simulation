@@ -50,9 +50,66 @@ public abstract class SimulationObject {
     
 
     public abstract void step(SimulationController controller);
-    public abstract double calculateDistanceToEnemy(SimulationController controller);
-    public abstract SimulationObject nearestEnemy(SimulationController controller);
+
+    public double calculateDistanceToEnemy(SimulationController controller){
+        double distance = Double.MAX_VALUE;
+
+        if(this.getClass().getSuperclass().getName().equals("Soldier") || this.getClass().getSuperclass().getName().equals("Bullet")){
+            for(int i = 0 ; i < controller.getZombies().size() ; i++) {
+                if(this.getPosition().distance(controller.getZombies().get(i).getPosition()) < distance)
+                    distance = this.getPosition().distance(controller.getZombies().get(i).getPosition());
+            }
+
+        }
+        else if(this.getClass().getSuperclass().getName().equals("Zombie")){
+            for(int i = 0 ; i < controller.getSoldiers().size() ; i++) {
+                if(this.getPosition().distance(controller.getSoldiers().get(i).getPosition()) < distance)
+                    distance = this.getPosition().distance(controller.getSoldiers().get(i).getPosition());
+            }
+
+        }
+        else {
+            System.out.println("Invalid Class");
+        }
+
+        return distance;
+    }
+
+    public SimulationObject nearestEnemy(SimulationController controller){
+        double distance_to_nearest_enemy;
+        if(this.getClass().getSuperclass().getName().equals("Soldier") || this.getClass().getSuperclass().getName().equals("Bullet")){
+            distance_to_nearest_enemy = calculateDistanceToEnemy(controller);
+            for(int i = 0 ; i < controller.getZombies().size() ; i++){
+                if(this.getPosition().distance(controller.getZombies().get(i).getPosition()) == distance_to_nearest_enemy)
+                    return controller.getZombies().get(i);
+            }
+        }
+        else if(this.getClass().getSuperclass().getName().equals("Zombie")){
+            distance_to_nearest_enemy = calculateDistanceToEnemy(controller);
+            for(int i = 0 ; i < controller.getSoldiers().size() ; i++){
+                if(this.getPosition().distance(controller.getSoldiers().get(i).getPosition()) == distance_to_nearest_enemy)
+                    return controller.getSoldiers().get(i);
+            }
+        }
+        else
+            System.out.println("Invalid Class");
+
+        return null;
+    }
     public abstract void setRandomDirection();
-    public abstract  void moveOrChangeDirection(SimulationController controller);
+
+    public void moveOrChangeDirection(SimulationController controller){
+        Position calculatedTarget = Position.calculateNextPosition(this.getPosition(), this.getDirection(), this.getSpeed());  //CALCULATE TARGET LOCATION
+        boolean change_position = controller.isInTheRange(calculatedTarget.getX(),calculatedTarget.getY());  // SET CHANGE POSITION FLAG BY LOOKING THE TARGET LOCATION IS IN THE RANGE OR NOT
+
+        if(change_position){
+            this.setPosition(calculatedTarget);
+            System.out.println(this.getName() + " moved to " + this.getPosition() + ".");
+        }
+        else{
+            this.setDirection(Position.generateRandomDirection(true));
+            System.out.println(this.getName() + " changed direction to " + this.getDirection() + ".");
+        }
+    }
 
 }

@@ -37,7 +37,6 @@ public abstract class Bullet extends SimulationObject {
             boolean change_position = controller.isInTheRange(next_position.getX(),next_position.getY());
             if(change_position){
                 this.setPosition(next_position);
-                System.out.println("Now the position is " + this.getPosition() + "step :" + i );
             }
             else{
                 controller.removeSimulationObject(this);
@@ -56,32 +55,7 @@ public abstract class Bullet extends SimulationObject {
     }
 
     @Override
-    public double calculateDistanceToEnemy(SimulationController controller) {
-        double distance = Double.MAX_VALUE;
-        for(int i = 0 ; i < controller.getZombies().size() ; i++) {
-            if(this.getPosition().distance(controller.getZombies().get(i).getPosition()) < distance)
-                distance = this.getPosition().distance(controller.getZombies().get(i).getPosition());
-        }
-        return distance;
-    }
-
-    @Override
-    public SimulationObject nearestEnemy(SimulationController controller) {
-        double distance_to_nearest_enemy = calculateDistanceToEnemy(controller);
-        for(int i = 0 ; i < controller.getZombies().size() ; i++){
-            if(this.getPosition().distance(controller.getZombies().get(i).getPosition()) == distance_to_nearest_enemy)
-                return controller.getZombies().get(i);
-        }
-        return null;
-    }
-
-    @Override
     public void setRandomDirection() {
-        return ;
-    }
-
-    @Override
-    public void moveOrChangeDirection(SimulationController controller) {
         return ;
     }
 

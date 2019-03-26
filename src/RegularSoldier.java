@@ -24,8 +24,7 @@ public class RegularSoldier extends  Soldier{
                 distance_to_closest_zombie = calculateDistanceToEnemy(controller); // CALCULATE THE DISTANCE TO NEAREST ZOMBIE
 
                 if(distance_to_closest_zombie <= this.getShooting_range()){ // IF THE CLOSEST DISTANCE < SHOOTING RANGE , CHANGE THE STATE AS AIMING
-                    this.setSoldier_state(SoldierState.AIMING);
-                    System.out.println(this.getName() + " changed state to " + this.getSoldier_state() + ".");
+                    this.setGivenState(SoldierState.AIMING);
                 }
 
                 break;
