@@ -13,7 +13,10 @@ public class Sniper extends  Soldier{
     public void step(SimulationController controller) {
         switch(this.getSoldier_state()){
             case SEARCHING:
-                this.setRandomDirection(controller); // SET RANDOM DIRECTION IF THIS IS THE FIRST STEP CALL
+                if(this.isFirstStep()){  // SET RANDOM DIRECTION IF THIS IS THE FIRST STEP CALL
+                    this.setRandomDirection();
+                    this.setFirstStep(false);
+                }
                 this.moveOrChangeDirection(controller); // CALCULATE NEXT POSITION AND TRY TO RUN , IF THE POSITION IS OUT OF BOUNDS CHANGE DIRECTION TO RANDOM VALUE.
                 this.setSoldier_state(SoldierState.AIMING); // CHANGE STATE TO AIMING
                 System.out.println(this.getName() + " changed state to " + this.getSoldier_state() + ".");

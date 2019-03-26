@@ -64,12 +64,9 @@ public abstract class Soldier extends SimulationObject {
     }
 
     @Override
-    public void setRandomDirection(SimulationController controller) {
-        if(isFirstStep()){
+    public void setRandomDirection() {
             this.setDirection(Position.generateRandomDirection(true));
-            this.setFirstStep(false);
             System.out.println(this.getName() + " changed direction to " + this.getDirection() + ".");
-        }
     }
 
     @Override
@@ -123,6 +120,11 @@ public abstract class Soldier extends SimulationObject {
             this.setSoldier_state(SoldierState.SEARCHING);
             System.out.println(this.getName() + " changed state to " + this.getSoldier_state() + ".");
         }
+    }
+
+    public void setGivenState(SoldierState state){
+        this.setSoldier_state(state); // CHANGE SOLDIER
+        System.out.println(this.getName() + " changed state to " + this.getSoldier_state() + ".");
     }
 
     @Override

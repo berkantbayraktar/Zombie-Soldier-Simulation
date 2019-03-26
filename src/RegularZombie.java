@@ -19,7 +19,11 @@ public class RegularZombie extends  Zombie {
            return;
        }
 
-        this.setRandomDirection(controller); // SET RANDOM DIRECTION IF THIS IS THE FIRST STEP CALL
+        if(this.isFirstStep()){  // SET RANDOM DIRECTION IF THIS IS THE FIRST STEP CALL
+            this.setRandomDirection();
+            this.setFirstStep(false);
+        }
+
         this.moveOrChangeDirection(controller); // CALCULATE NEXT POSITION AND TRY TO RUN , IF THE POSITION IS OUT OF BOUNDS CHANGE DIRECTION TO RARNDOM VALUE.
 
         switch (this.getZombie_state()){

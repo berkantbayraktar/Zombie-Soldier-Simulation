@@ -73,12 +73,9 @@ public abstract class Zombie extends  SimulationObject {
     }
 
     @Override
-    public void setRandomDirection(SimulationController controller) {
-        if(isFirstStep()){
+    public void setRandomDirection() {
             this.setDirection(Position.generateRandomDirection(true));
-            this.setFirstStep(false);
             System.out.println(this.getName() + " changed direction to " + this.getDirection() + ".");
-        }
     }
 
     @Override

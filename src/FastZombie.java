@@ -10,8 +10,10 @@ public class FastZombie extends Zombie {
 
     @Override
     public void step(SimulationController controller) {
-        this.setRandomDirection(controller);
-
+        if(this.isFirstStep()){  // SET RANDOM DIRECTION IF THIS IS THE FIRST STEP CALL
+            this.setRandomDirection();
+            this.setFirstStep(false);
+        }
     }
 
 }

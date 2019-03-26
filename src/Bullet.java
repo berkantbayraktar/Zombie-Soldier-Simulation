@@ -76,7 +76,7 @@ public abstract class Bullet extends SimulationObject {
     }
 
     @Override
-    public void setRandomDirection(SimulationController controller) {
+    public void setRandomDirection() {
         return ;
     }
 

@@ -14,7 +14,11 @@ public class RegularSoldier extends  Soldier{
 
         switch (this.getSoldier_state()){
             case SEARCHING:
-                this.setRandomDirection(controller); // SET RANDOM DIRECTION IF THIS IS THE FIRST STEP CALL
+                if(this.isFirstStep()){  // SET RANDOM DIRECTION IF THIS IS THE FIRST STEP CALL
+                    this.setRandomDirection();
+                    this.setFirstStep(false);
+                }
+
                 this.moveOrChangeDirection(controller); // CALCULATE NEXT POSITION AND TRY TO RUN , IF THE POSITION IS OUT OF BOUNDS CHANGE DIRECTION TO RANDOM VALUE.
 
                 distance_to_closest_zombie = calculateDistanceToEnemy(controller); // CALCULATE THE DISTANCE TO NEAREST ZOMBIE
