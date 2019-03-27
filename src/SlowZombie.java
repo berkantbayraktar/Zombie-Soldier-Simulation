@@ -27,7 +27,7 @@ public class SlowZombie extends  Zombie{
                     this.setRandomDirection();
                     this.setFirstStep(false);
                 }
-                
+
                 if(distance_to_closest_soldier <= this.getDetection_range()){
                     this.setZombie_state(ZombieState.FOLLOWING);
                     System.out.println(this.getName() + " changed state to " + this.getZombie_state() + ".");
