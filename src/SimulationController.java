@@ -74,7 +74,7 @@ public class SimulationController {
                 break;
 
             default:
-                System.out.println("Invalid class name ADD");
+                System.out.println("Invalid class name");
         }
 
 

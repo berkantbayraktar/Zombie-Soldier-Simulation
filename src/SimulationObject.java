@@ -96,7 +96,10 @@ public abstract class SimulationObject {
 
         return null;
     }
-    public abstract void setRandomDirection();
+    public void setRandomDirection(){
+        this.setDirection(Position.generateRandomDirection(true));
+        System.out.println(this.getName() + " changed direction to " + this.getDirection() + ".");
+    }
 
     public void moveOrChangeDirection(SimulationController controller){
         Position calculatedTarget = Position.calculateNextPosition(this.getPosition(), this.getDirection(), this.getSpeed());  //CALCULATE TARGET LOCATION

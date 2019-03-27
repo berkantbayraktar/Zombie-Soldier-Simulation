@@ -55,11 +55,6 @@ public abstract class Bullet extends SimulationObject {
     }
 
     @Override
-    public void setRandomDirection() {
-        return ;
-    }
-
-    @Override
     public String toString() {
         return "Bullet{" +
                 "name=" + this.getName() +

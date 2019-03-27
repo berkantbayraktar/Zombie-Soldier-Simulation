@@ -43,11 +43,6 @@ public abstract class Soldier extends SimulationObject {
         isFirstStep = firstStep;
     }
 
-    @Override
-    public void setRandomDirection() {
-            this.setDirection(Position.generateRandomDirection(true));
-            System.out.println(this.getName() + " changed direction to " + this.getDirection() + ".");
-    }
 
     public void aim(SimulationController controller){
         Position zombie_position;
@@ -73,7 +68,7 @@ public abstract class Soldier extends SimulationObject {
         double distance_to_closest_zombie;
 
         controller.addSimulationObject(bullet);
-        System.out.println(this.getName() + " fired " + bullet.getName() + " to " + bullet.getDirection() + ".");
+        System.out.println(this.getName() + " fired " + bullet.getName() + " to direction " + bullet.getDirection() + ".");
         distance_to_closest_zombie = calculateDistanceToEnemy(controller);
         if(distance_to_closest_zombie <= this.getShooting_range()) {
             this.setGivenState(SoldierState.AIMING);

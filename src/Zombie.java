@@ -52,11 +52,6 @@ public abstract class Zombie extends  SimulationObject {
         isFirstStep = firstStep;
     }
 
-    @Override
-    public void setRandomDirection() {
-            this.setDirection(Position.generateRandomDirection(true));
-            System.out.println(this.getName() + " changed direction to " + this.getDirection() + ".");
-    }
 
     public boolean tryToKill(SimulationController controller, SimulationObject enemy ,double distance_to_closest_soldier ){
         if(distance_to_closest_soldier <= this.getCollision_range() + ((Soldier)enemy).getCollision_range()){
