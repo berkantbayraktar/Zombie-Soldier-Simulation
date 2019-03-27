@@ -24,7 +24,7 @@ public class FastZombie extends Zombie {
                 }
 
                 if(distance <= this.getDetection_range()){
-                    this.turnToEnempy(enemy);
+                    this.turnToEnemy(enemy);
                     this.setZombie_state(ZombieState.FOLLOWING);
                     System.out.println(this.getName() + " changed state to " + this.getZombie_state() + ".");
                     return;

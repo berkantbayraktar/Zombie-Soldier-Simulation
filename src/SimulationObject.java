@@ -96,6 +96,16 @@ public abstract class SimulationObject {
 
         return null;
     }
+
+    public void turnToEnemy(SimulationObject enemy){
+        Position dir;
+        dir = new Position(enemy.getPosition().getX()-this.getPosition().getX(),enemy.getPosition().getY()-this.getPosition().getY());
+        dir.normalize();
+        this.setDirection(dir);
+        System.out.println(this.getName() + " changed direction to " + this.getDirection() + ".");
+    }
+
+
     public void setRandomDirection(){
         this.setDirection(Position.generateRandomDirection(true));
         System.out.println(this.getName() + " changed direction to " + this.getDirection() + ".");

@@ -62,14 +62,6 @@ public abstract class Zombie extends  SimulationObject {
         else
             return false;
     }
-    
-    public void turnToEnempy(SimulationObject enemy){
-        Position dir;
-        dir = new Position(enemy.getPosition().getX()-this.getPosition().getX(),enemy.getPosition().getY()-this.getPosition().getY());
-        dir.normalize();
-        this.setDirection(dir);
-        System.out.println(this.getName() + " changed direction to " + this.getDirection() + ".");
-    }
 
     @Override
     public String toString() {

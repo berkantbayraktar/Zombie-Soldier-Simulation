@@ -45,24 +45,23 @@ public abstract class Soldier extends SimulationObject {
 
 
     public void aim(SimulationController controller){
-        Position zombie_position;
-        Position new_direction;
-        double distance_to_closest_zombie;
+        SimulationObject enemy;
+        double distance;
 
-        distance_to_closest_zombie = calculateDistanceToEnemy(controller);
-        if(distance_to_closest_zombie <= this.getShooting_range()){
-            zombie_position = this.nearestEnemy(controller).getPosition();
-            new_direction = new Position(zombie_position.getX()-this.getPosition().getX(),zombie_position.getY()-this.getPosition().getY());
-            new_direction.normalize();
+        distance = calculateDistanceToEnemy(controller);
+        if(distance <= this.getShooting_range()){
+            enemy = this.nearestEnemy(controller);
+
             this.setGivenState(SoldierState.SHOOTING);
-            this.setDirection(new_direction);
-            System.out.println(this.getName() + " changed direction to " + this.getDirection() + ".");
+            this.turnToEnemy(enemy );
 
         }
         else{
             this.setGivenState(SoldierState.SEARCHING);
         }
     }
+
+
 
     public void shoot(SimulationController controller, SimulationObject bullet){
         double distance_to_closest_zombie;

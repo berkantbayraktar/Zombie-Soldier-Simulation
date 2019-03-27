@@ -36,7 +36,7 @@ public class SlowZombie extends  Zombie{
 
             case FOLLOWING:
                 if(distance <= this.getDetection_range()){
-                    this.turnToEnempy(enemy);
+                    this.turnToEnemy(enemy);
                 }
                 this.moveOrChangeDirection(controller);
 
