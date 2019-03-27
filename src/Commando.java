@@ -69,20 +69,17 @@ public class Commando extends Soldier{
 
     @Override
     public void aim(SimulationController controller) {
-        Position zombie_position;
-        Position new_direction;
+        SimulationObject enemy;
         double distance_to_closest_zombie;
-
         distance_to_closest_zombie = calculateDistanceToEnemy(controller);
 
         if(distance_to_closest_zombie <= this.getShooting_range()){
-            zombie_position = this.nearestEnemy(controller).getPosition();
-            new_direction = new Position(zombie_position.getX()-this.getPosition().getX(),zombie_position.getY()-this.getPosition().getY());
-            new_direction.normalize();
+            enemy = this.nearestEnemy(controller);
+
             this.setSoldier_state(SoldierState.SHOOTING);
             System.out.println(this.getName() + " changed state to " + this.getSoldier_state() + ".");
-            this.setDirection(new_direction);
-            System.out.println(this.getName() + " changed direction to " + this.getDirection() + ".");
+            
+            this.turnToEnemy(enemy);
             this.setShouldReturn(true);
         }
     }
