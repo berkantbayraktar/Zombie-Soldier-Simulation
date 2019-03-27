@@ -46,15 +46,12 @@ public class Commando extends Soldier{
                 System.out.println(this.getName() + " fired " + bullet.getName() + " to " + bullet.getDirection() + ".");
 
                 double distance_to_closest_zombie =  calculateDistanceToEnemy(controller);
-                Position zombie_position;
-                Position new_direction;
+                SimulationObject enemy;
+
 
                 if(distance_to_closest_zombie <= this.getShooting_range()){
-                    zombie_position = this.nearestEnemy(controller).getPosition();
-                    new_direction = new Position(zombie_position.getX()-this.getPosition().getX(),zombie_position.getY()-this.getPosition().getY());
-                    new_direction.normalize();
-                    this.setDirection(new_direction);
-                    System.out.println(this.getName() + " changed direction to " + this.getDirection() + ".");
+                    enemy = this.nearestEnemy(controller);
+                    this.turnToEnemy(enemy);
 
                 }
 
