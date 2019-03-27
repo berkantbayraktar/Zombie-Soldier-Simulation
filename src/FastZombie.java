@@ -10,15 +10,11 @@ public class FastZombie extends Zombie {
 
     @Override
     public void step(SimulationController controller) {
-        double distance_to_closest_soldier = calculateDistanceToEnemy(controller);
-        SimulationObject closest_soldier = nearestEnemy(controller);
-        Position new_direction;
+        double distance = calculateDistanceToEnemy(controller);
+        SimulationObject enemy = nearestEnemy(controller);
 
-        if(distance_to_closest_soldier <= this.getCollision_range() + ((Soldier)closest_soldier).getCollision_range()){
-            System.out.println(this.getName() + " killed " + closest_soldier.getName() + ".");
-            controller.removeSimulationObject(closest_soldier);
+        if(this.tryToKill(controller,enemy,distance))
             return;
-        }
 
         switch (this.getZombie_state()){
             case WANDERING:
@@ -27,11 +23,8 @@ public class FastZombie extends Zombie {
                     this.setFirstStep(false);
                 }
 
-                if(distance_to_closest_soldier <= this.getDetection_range()){
-                    new_direction = new Position(closest_soldier.getPosition().getX()-this.getPosition().getX(),closest_soldier.getPosition().getY()-this.getPosition().getY());
-                    new_direction.normalize();
-                    this.setDirection(new_direction);
-                    System.out.println(this.getName() + " changed direction to " + this.getDirection() + ".");
+                if(distance <= this.getDetection_range()){
+                    this.turnToEnempy(enemy);
                     this.setZombie_state(ZombieState.FOLLOWING);
                     System.out.println(this.getName() + " changed state to " + this.getZombie_state() + ".");
                     return;
