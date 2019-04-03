@@ -1,5 +1,3 @@
-import javafx.geometry.Pos;
-
 public abstract class Bullet extends SimulationObject {
 
     private static int bullet_number = 0;
