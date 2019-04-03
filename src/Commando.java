@@ -75,11 +75,9 @@ public class Commando extends Soldier{
 
         if(distance_to_closest_zombie <= this.getShooting_range()){
             enemy = this.nearestEnemy(controller);
-
+            this.turnToEnemy(enemy);
             this.setSoldier_state(SoldierState.SHOOTING);
             System.out.println(this.getName() + " changed state to " + this.getSoldier_state() + ".");
-            
-            this.turnToEnemy(enemy);
             this.setShouldReturn(true);
         }
     }

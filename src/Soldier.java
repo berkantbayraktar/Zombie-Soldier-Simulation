@@ -51,10 +51,8 @@ public abstract class Soldier extends SimulationObject {
         distance = calculateDistanceToEnemy(controller);
         if(distance <= this.getShooting_range()){
             enemy = this.nearestEnemy(controller);
-
+            this.turnToEnemy(enemy);
             this.setGivenState(SoldierState.SHOOTING);
-            this.turnToEnemy(enemy );
-
         }
         else{
             this.setGivenState(SoldierState.SEARCHING);
