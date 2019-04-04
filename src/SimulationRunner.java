@@ -11,8 +11,12 @@ public class SimulationRunner {
         SimulationController simulation = new SimulationController(50, 50);
 
 
-        simulation.addSimulationObject(new RegularSoldier("Soldier1", new Position(10, 10)));
-        simulation.addSimulationObject(new RegularZombie("Zombie1", new Position(40, 40)));
+        //simulation.addSimulationObject(new RegularSoldier("Soldier1", new Position(10, 10)));
+        //simulation.addSimulationObject(new RegularZombie("Zombie1", new Position(40, 40)));
+        //simulation.addSimulationObject(new Commando("Soldier1", new Position(10, 10)));
+        //simulation.addSimulationObject(new SlowZombie("Zombie1", new Position(40, 40)));
+        simulation.addSimulationObject(new Sniper("Soldier1", new Position(10, 10)));
+        simulation.addSimulationObject(new FastZombie("Zombie1", new Position(40, 40)));
 
 
         while (!simulation.isFinished()) {
