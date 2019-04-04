@@ -32,7 +32,7 @@ public abstract class Soldier extends SimulationObject {
     private boolean isFirstStep;
 
     /**
-     * <p> Creates a Soldier object with the given parameters. Also, assigns False to the isFistStep variable by default.</p>
+     * <p> Creates a Soldier object with the given parameters. Also, assigns True to the isFistStep variable by default.</p>
      * @param name Name of the Soldier
      * @param position Position of the Soldier
      * @param speed Speed of the Soldier
