@@ -23,10 +23,6 @@ public abstract class Zombie extends  SimulationObject {
      */
     private final double detection_range;
     /**
-     * Keeps the number of step zombie has been in FOLLOWING state
-     */
-    private int step_count;
-    /**
      * A flag to be able to check whether the zombie is in the first state or not
      */
     private boolean isFirstStep;
@@ -40,16 +36,14 @@ public abstract class Zombie extends  SimulationObject {
      * @param zombie_state State of the Zombie
      * @param collision_range Collision range of the Zombie
      * @param detection_range Detection range of the Zombie
-     * @param step_count The number of step zombie has been in FOLLOWING STATE
      */
 
-    public Zombie(String name, Position position, double speed, ZombieType zombie_type, ZombieState zombie_state, double collision_range, double detection_range, int step_count) {
+    public Zombie(String name, Position position, double speed, ZombieType zombie_type, ZombieState zombie_state, double collision_range, double detection_range) {
         super(name, position, speed);
         this.zombie_type = zombie_type;
         this.zombie_state = zombie_state;
         this.collision_range = collision_range;
         this.detection_range = detection_range;
-        this.step_count = step_count;
         this.isFirstStep = true;
     }
 
@@ -96,14 +90,6 @@ public abstract class Zombie extends  SimulationObject {
 
     public double getDetection_range() {
         return detection_range;
-    }
-
-    public int getStep_count() {
-        return step_count;
-    }
-
-    public void setStep_count(int step_count) {
-        this.step_count = step_count;
     }
 
     public boolean isFirstStep() {
