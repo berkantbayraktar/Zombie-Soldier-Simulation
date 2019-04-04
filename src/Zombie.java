@@ -91,15 +91,38 @@ public abstract class Zombie extends  SimulationObject {
     public double getDetection_range() {
         return detection_range;
     }
+    /**
+     * Gets the information that whether Zombie is in the first step or not
+     * @return a Boolean according to whether Zombie is in the first step or not
+     */
 
     public boolean isFirstStep() {
         return isFirstStep;
     }
 
+    /**
+     * Sets isFirstStep flag with the given parameter
+     * @param firstStep Information that whether Soldier is in the first step or not
+     */
+
     public void setFirstStep(boolean firstStep) {
         isFirstStep = firstStep;
     }
 
+    /**
+     * <p> All zombie types have one common behaviour they perform at the beginning of their step call.
+     * This method is implemented to be able to perform this common behavior . So, this method is used by all types of the zombie at the beginning of their step call.</p>
+     * <p> The procedure is given below </p>
+     * <p> 1- Calculate the euclidean distance to the closest soldier. </p>
+     * <p> If the distance is shorter than or equal to the sum of collision distance of zombie and soldier
+     * ,remove the soldier from the simulation and return True </p>
+     * <p> If not, return False </p>
+     *
+     * @param controller Simulation Controller
+     * @param enemy Closest Soldier
+     * @param distance_to_closest_soldier Distance to the closest soldier
+     * @return True if the closest soldier is removed from simulation, False otherwise.
+     */
 
     public boolean tryToKill(SimulationController controller, SimulationObject enemy ,double distance_to_closest_soldier ){
         if(distance_to_closest_soldier <= this.getCollision_range() + ((Soldier)enemy).getCollision_range()){
