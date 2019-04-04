@@ -11,9 +11,9 @@ public class RegularZombie extends  Zombie {
     @Override
     public void step(SimulationController controller) {
         double distance = calculateDistanceToEnemy(controller);
-        SimulationObject closest_soldier = nearestEnemy(controller);
+        SimulationObject enemy = nearestEnemy(controller);
 
-       if(this.tryToKill(controller,closest_soldier,distance))
+       if(this.tryToKill(controller,enemy,distance))
            return;
 
         if(this.isFirstStep()){  // SET RANDOM DIRECTION IF THIS IS THE FIRST STEP CALL
@@ -27,6 +27,7 @@ public class RegularZombie extends  Zombie {
             case WANDERING:
                 distance = calculateDistanceToEnemy(controller); // CALCULATE THE DISTANCE TO NEAREST SOLDIER
                     if(distance <= this.getDetection_range()){  // IF THE CLOSEST DISTANCE < DETECTION RANGE , CHANGE THE STATE AS FOLLOWING
+                        this.turnToEnemy(enemy);
                         this.setZombie_state(ZombieState.FOLLOWING);
                         System.out.println(this.getName() + " changed state to " + this.getZombie_state() + ".");
                 }
