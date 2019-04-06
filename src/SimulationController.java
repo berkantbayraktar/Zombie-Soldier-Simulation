@@ -3,6 +3,8 @@ import java.util.List;
 
 /**
  * Most important class in the entire simulation. Controls all simulation objects and map dimensions. All simulation objects interact with this class.
+ * @author Berkant Bayraktar
+ * @version 1.0
  */
 public class SimulationController {
     /**
