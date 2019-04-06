@@ -66,15 +66,6 @@ public abstract class Zombie extends  SimulationObject {
     }
 
     /**
-     * Gets type of the Zombie.
-     * @return Type of the Zombie.
-     */
-
-    public ZombieType getZombie_type() {
-        return zombie_type;
-    }
-
-    /**
      * Gets collision range of the Zombie
      * @return Collision range of the Zombie
      */

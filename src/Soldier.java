@@ -77,13 +77,6 @@ public abstract class Soldier extends SimulationObject {
         return shooting_range;
     }
 
-    /**
-     * Gets type of the Soldier.
-     * @return Type of the Soldier.
-     */
-    public SoldierType getSoldier_type() {
-        return soldier_type;
-    }
 
     /**
      * Gets collision range of the Soldier.
