@@ -8,7 +8,7 @@ public class SlowZombie extends  Zombie{
      * <p> Creates SlowZombie object with the given parameters. </p>
      * <p> Name and position of the zombies are given to the parent class's constructor as parameter.</p>
      * <p> Other values which specific to the Slow Zombie type is also given to parent class's constructor as parameter. </p>
-     * <p> Values specific to the Regular Zombie type are given below</p>
+     * <p> Values specific to the Slow Zombie type are given below</p>
      * <ul>
      *     <li> {@link ZombieState}: SEARCHING </li>
      *     <li> {@link ZombieType}: REGULAR</li>
