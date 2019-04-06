@@ -1,6 +1,3 @@
-
-import javafx.geometry.Pos;
-
 import java.util.Random;
 
 /**
@@ -56,6 +53,12 @@ public class Position {
         
         this.length = 1.0;
     }
+
+    /**
+     * Generates random direction for the Simulation object. If the parameters is set True, the direction will be normalized. If not, the direction will not be normalized.
+     * @param normalize If the direction to be calculated is to be normalized, it must be set to True.
+     * @return random direction for the Simulation object.
+     */
     
     public static Position generateRandomDirection(boolean normalize) {
         Random random = new Random();
@@ -67,6 +70,14 @@ public class Position {
             result.normalize();
         return result;
     }
+
+    /**
+     * Calculates the next position of the Simulation Object
+     * @param pos Position of the Simulation Object
+     * @param direction Direction of the Simulation Object
+     * @param speed Speed of the Simulation Object
+     * @return the next position of the Simulation Object
+     */
 
     public static Position calculateNextPosition(Position pos, Position direction, double speed){
         Position target = new Position(direction.getX(),direction.getY());
