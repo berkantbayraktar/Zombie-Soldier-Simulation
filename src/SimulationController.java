@@ -2,45 +2,95 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
- *
+ * Most important class in the entire simulation. Controls all simulation objects and map dimensions. All simulation objects interact with this class.
  */
 public class SimulationController {
+    /**
+     * height of the simulation grid.
+     */
     private final double height;
+
+    /**
+     * width of the simulation grid.
+     */
     private final double width;
+    /**
+     * List of Zombies in the simulation.
+     */
     private List<SimulationObject> zombies = new ArrayList();
+
+    /**
+     * List of Soldiers in the simulation.
+     */
     private List<SimulationObject> soldiers = new ArrayList();
+
+    /**
+     * List of Bullets in the simulation.
+     */
     private  List<SimulationObject> bullets = new ArrayList();
+
+    /**
+     * Gets the zombies in the simulation
+     * @return the zombies in the simulation
+     */
 
     public List<SimulationObject> getZombies() {
         return zombies;
     }
 
+    /**
+     * Gets the soldiers in the simulation
+     * @return the soldiers in the simulation
+     */
+
     public List<SimulationObject> getSoldiers() {
         return soldiers;
     }
 
-    public List<SimulationObject> getBullets() {
-        return bullets;
-    }
+    /**
+     * Creates a Simulation Environment with the given parameters.
+     * @param width width of the simulation grid.
+     * @param height height of the simulation grid.
+     */
 
     public SimulationController(double width, double height) {
         this.width = width;
         this.height = height;
     }
 
+    /**
+     * Checks whether the given position is in the bounds or not.
+     * @param x latitude
+     * @param y longitude
+     * @return a Boolean which holds information about whether the given position is in the bounds or not.
+     */
+
     public boolean isInTheRange(double x, double y){   // CHECKS THE GIVEN LOCATION IS IN THE GRID OR NOT ?
         return ( x > 0 && x < getWidth() && y > 0 && y < getHeight());
 
     }
 
+    /**
+     * Gets height of the simulation grid.
+     * @return height of the simulation grid.
+     */
+
     public double getHeight() {
         return height;
     }
 
+    /**
+     * Gets width of the simulation grid.
+     * @return width of the simulation grid.
+     */
+
     public double getWidth() {
         return width;
     }
+
+    /**
+     * Simulates the objects in the given simulation in order Soldiers , Zombies and Bullets.
+     */
 
     //Make sure to fill these methods for grading.
     public void stepAll() {
@@ -58,6 +108,12 @@ public class SimulationController {
         }
     
     }
+
+    /**
+     * Adds the simulation object given in the parameter to the simulation.
+     * @param obj Simulation Object will be added to the simulation.
+     */
+
     public void addSimulationObject(SimulationObject obj) {
         Class c = obj.getClass();
         switch (c.getSuperclass().getName()){
@@ -79,6 +135,11 @@ public class SimulationController {
 
 
     }
+
+    /**
+     * Removes the simulation object given in the parameter from the simulation.
+     * @param obj Simulation Object will be removed from the simulation.
+     */
     
     public void removeSimulationObject(SimulationObject obj) {
         Class c = obj.getClass();
@@ -97,6 +158,11 @@ public class SimulationController {
                 System.out.println("Invalid class name");
         }
     }
+
+    /**
+     * Checks whether there are only zombies or soldiers left in the simulation. If it is, returns true. If there is no zombie or soldier left, also returns true.
+     * @return a Boolean which holds the information about whether there are only zombies or soldiers left in the simulation.
+     */
     
     public boolean isFinished() {
         return (soldiers.isEmpty() || zombies.isEmpty());
