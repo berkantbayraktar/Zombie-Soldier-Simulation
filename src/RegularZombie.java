@@ -18,9 +18,9 @@ public class RegularZombie extends  Zombie {
      * <ul>
      *     <li> {@link ZombieState}: SEARCHING </li>
      *     <li> {@link ZombieType}: REGULAR</li>
-     *     <li> collision range of the Soldier: 2.0</li>
-     *     <li> detection range of the Soldier: 20.0</li>
-     *     <li> speed of the Soldier: 5.0 </li>
+     *     <li> collision range of the Zombie: 2.0</li>
+     *     <li> detection range of the Zombie: 20.0</li>
+     *     <li> speed of the Zombie: 5.0 </li>
      * </ul>
      * @param name Name of the Regular Zombie
      * @param position Position of the Regular Zombie
