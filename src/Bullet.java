@@ -81,7 +81,7 @@ public abstract class Bullet extends SimulationObject {
         for(int i = 0 ; i < step ; i++){
             distance = calculateDistanceToEnemy(controller);
             if(distance <= ((Zombie)nearest_enemy).getCollision_range()){
-                controller.removeSimulationObject(nearest_enemy);
+                nearest_enemy.setActive(false);
                 controller.removeSimulationObject(this);
                 this.setActive(false);
                 System.out.println(this.getName() + " hit " + nearest_enemy.getName() + ".");

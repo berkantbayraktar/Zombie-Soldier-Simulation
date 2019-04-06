@@ -91,22 +91,32 @@ public class SimulationController {
     }
 
     /**
-     * Simulates the objects in the given simulation in order Soldiers , Zombies and Bullets.
+     * Simulates the objects in the given simulation in order Soldiers , Zombies and Bullets. Then, after all step functions are called, removes inActive objects from simulation.
      */
 
     //Make sure to fill these methods for grading.
     public void stepAll() {
         for(int i = 0 ; i < soldiers.size() ; i++){
-            soldiers.get(i).step(this );
+            if(soldiers.get(i).isActive())
+                soldiers.get(i).step(this );
         }
         for(int i = 0 ; i < zombies.size() ; i++){
-            zombies.get(i).step(this );
+            if(zombies.get(i).isActive())
+                zombies.get(i).step(this );
         }
         for(int i = 0 ; i < bullets.size() ; i++){
             if(bullets.get(i).isActive())
                 bullets.get(i).step(this );
             else
                 bullets.get(i).setActive(true);
+        }
+        for(int i = 0 ; i < soldiers.size() ; i++){
+            if(!soldiers.get(i).isActive())
+                removeSimulationObject(soldiers.get(i));
+        }
+        for(int i = 0 ; i < zombies.size() ; i++){
+            if(!zombies.get(i).isActive())
+                removeSimulationObject(zombies.get(i));
         }
     
     }

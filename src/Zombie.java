@@ -118,7 +118,7 @@ public abstract class Zombie extends  SimulationObject {
     public boolean tryToKill(SimulationController controller, SimulationObject enemy ,double distance_to_closest_soldier ){
         if(distance_to_closest_soldier <= this.getCollision_range() + ((Soldier)enemy).getCollision_range()){
             System.out.println(this.getName() + " killed " + enemy.getName() + ".");
-            controller.removeSimulationObject(enemy);
+            enemy.setActive(false);
             return true;
         }
         else
