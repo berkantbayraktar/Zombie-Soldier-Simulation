@@ -19,17 +19,17 @@ public class SimulationController {
     /**
      * List of Zombies in the simulation.
      */
-    private List<SimulationObject> zombies = new ArrayList();
+    private List<SimulationObject> zombies = new ArrayList<SimulationObject>();
 
     /**
      * List of Soldiers in the simulation.
      */
-    private List<SimulationObject> soldiers = new ArrayList();
+    private List<SimulationObject> soldiers = new ArrayList<SimulationObject>();
 
     /**
      * List of Bullets in the simulation.
      */
-    private  List<SimulationObject> bullets = new ArrayList();
+    private  List<SimulationObject> bullets = new ArrayList<SimulationObject>();
 
     /**
      * Gets the zombies in the simulation
